@@ -3,3 +3,8 @@ body{
     margin-bottom: 70px;
     display: block;
 }
+
+.form-inline .width-fix {
+    width: 700px;
+    max-width: 100%;
+}

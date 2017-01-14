@@ -5,14 +5,20 @@
   <a class="navbar-brand" href="#">ChitChat</a>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <form class="form-inline">
-      <button (click)="login()" *ngIf="!name" class="btn btn-outline-success" type="button">Login to Chat</button>
-      <button (click)="logout()" *ngIf="name" class="btn btn-outline-danger" type="button">Log Out</button>
 
-    </form>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+          <form class="form-inline">
+            <button (click)="login()" *ngIf="!name" class="btn btn-outline-success" type="button">Login with Facebook to Chat</button>
+            <button (click)="logout()" *ngIf="name" class="btn btn-outline-danger" type="button">Log Out</button>
+          </form>
+      </li>
 
-    <form class="form-inline my-2 my-lg-0" *ngIf="name">
-      <input class="form-control mr-sm-2" type="text" placeholder="Your Message" id="message" (keyup.enter)="chatSend($event.target.value)" name="msgVal" [(ngModel)]="msgVal">
+    </ul>
+
+
+    <form class="form-inline my-2 my-lg-0 pull-sm-right pull-md-right pull-lg-right" *ngIf="name">
+      <input class="form-control mr-sm-6 width-fix" type="text" placeholder="Type your message here and press enter." id="message" (keyup.enter)="chatSend($event.target.value)" name="msgVal" [(ngModel)]="msgVal">
 
     </form>
 
@@ -27,11 +33,10 @@
 
         <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let item of items | async">
           <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{item.name}}</h5>
-            <small>3 days ago</small>
+            <h5 class="mb-1">{{item.name.displayName}}</h5>
+            <small><img [src]="item.name.photoURL" alt="{{item.name.displayName}}"></small>
           </div>
           <p class="mb-1">{{item.message}}</p>
-          <small>Donec id elit non mi porta.</small>
         </div>
 
       </div>

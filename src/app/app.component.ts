@@ -34,7 +34,7 @@ export class AppComponent {
   }
 
   chatSend(thisMessage:string){
-    this.items.push({message: thisMessage, name: this.name.facebook.fullName});
+    this.items.push({message: thisMessage, name: this.name.facebook.displayName});
     this.msgVal = '';
   }
 
